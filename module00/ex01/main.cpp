@@ -3,11 +3,20 @@
 
 int main ()
 {
-
+    std::string input;
     //make the loop here
     while(1 == 1)
     {
-        std::cout << "hello";
+        std::cin >> input;
+        if (input == "ADD")
+            std::cout << "hey!";
+        else if (input == "SEARCH")
+            std::cout << "hoi";
+        else if (input == "EXIT")
+            return (0);
+        else
+            std::cout << "Bad input";
+        std::endl (std::cout);
     }
     //We need two classes, phonebook and contacts
 
