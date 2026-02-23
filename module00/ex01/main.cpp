@@ -1,15 +1,29 @@
-#include <iostream>
-#include <string>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
+
+void print_welcome() {
+    std::cout << "******************************************" << std::endl;
+    std::cout << "* *" << std::endl;
+    std::cout << "* WELCOME TO MY AWESOME PHONEBOOK      *" << std::endl;
+    std::cout << "* VERSION 1.0                *" << std::endl;
+    std::cout << "* *" << std::endl;
+    std::cout << "******************************************" << std::endl;
+    std::cout << "Available commands: ADD, SEARCH, EXIT" << std::endl;
+    std::cout << "******************************************" << std::endl;
+}
 
 int main ()
 {
     std::string input;
+    PhoneBook phonebook;
     //make the loop here
     while(1 == 1)
     {
-        std::cin >> input;
+        print_welcome();
+        std::getline(std::cin, input);
         if (input == "ADD")
-            std::cout << "hey!";
+            phonebook.add_contact();
+            
         else if (input == "SEARCH")
             std::cout << "hoi";
         else if (input == "EXIT")

@@ -1,12 +1,12 @@
 # Program name
-NAME      = userlist
+NAME      = phonebook
 # Compiler and flags
 
 CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp 
+SRC       = main.cpp Contact.cpp PhoneBook.cpp 
 OBJ       = $(SRC:.cpp=.o)
 
 # Default
