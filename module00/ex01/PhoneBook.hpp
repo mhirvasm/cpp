@@ -19,6 +19,7 @@ class PhoneBook
 
         void    add_contact();
         void    search_contact();
+        void    exit();
         
 };
 #endif

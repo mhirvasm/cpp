@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <iomanip> //manipulator functions
 
 //Constructor intializing values
 PhoneBook::PhoneBook()
@@ -91,4 +92,10 @@ void    search_contact()
     is out of range or wrong, define a relevant behavior. Otherwise, display the
     contact information, one field per line.
     */
+
+}
+
+void    exit()
+{
+    exit(0);
 }
