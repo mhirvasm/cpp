@@ -22,11 +22,11 @@ void    PhoneBook::add_contact()
      ◦ The contact fields are: first name, last name, nickname, phone number, and
      darkest secret. A saved contact can’t have empty fields.
     */
-    std::string firstname, lastname, phonenumber, darkestsecret;
+    std::string firstname, lastname, nickname, phonenumber, darkestsecret;
 
     while (true)
     {
-    std::cout << "Enter firstname:\n";
+    std::cout << "Enter firstname: ";
     std::getline(std::cin, firstname);
     if (!firstname.empty())
     {
@@ -38,7 +38,7 @@ void    PhoneBook::add_contact()
 
     while (true)
     {
-    std::cout << "Enter lastname";
+    std::cout << "Enter lastname: ";
     std::getline(std::cin, lastname);
     if (!lastname.empty())
     {
@@ -50,7 +50,20 @@ void    PhoneBook::add_contact()
 
     while (true)
     {
-    std::cout << "Enter phonenumber:\n";
+    std::cout << "Enter nickname: ";
+    std::getline(std::cin, nickname);
+    if (!nickname.empty())
+    {
+        this->_contacts[this->_index % 8].set_nickname(nickname);
+        break ;
+    }
+    std::cout << "Invalid input, field can't be empty.\n" << std::endl;
+    }
+
+
+    while (true)
+    {
+    std::cout << "Enter phonenumber: ";
     std::getline(std::cin, phonenumber);
     if (!phonenumber.empty())
     {
@@ -62,7 +75,7 @@ void    PhoneBook::add_contact()
 
     while (true)
     {
-    std::cout << "Enter darkestsecret:\n";
+    std::cout << "Enter darkestsecret: ";
     std::getline(std::cin, darkestsecret);
     if (!darkestsecret.empty())
     {
@@ -79,7 +92,7 @@ void    PhoneBook::add_contact()
 
 }
 
-void    search_contact()
+void    PhoneBook::search_contact()
 {
     /*
     ◦ Display the saved contacts as a list of 4 columns: index, first name, last
@@ -92,6 +105,35 @@ void    search_contact()
     is out of range or wrong, define a relevant behavior. Otherwise, display the
     contact information, one field per line.
     */
+    
+    //setw as set width
+    // right to align text right 
+    // |     index|first name| last name|  nickname|
+
+    std::string firstname, lastname, phonenumber, nickname;
+
+    std::cout << "|" << std::setw(10) << "Index" << "|";
+    std::cout << "|" << std::setw(10) << "Firstname" << "|";
+    std::cout << "|" << std::setw(10) << "Lastname" << "|";
+    std::cout << "|" << std::setw(10) << "Nickname" << "|";
+    std::cout << std::endl;
+
+    for (int i = 0; i < this->_count; i++)
+    {
+        firstname = _contacts[i].get_firstname();
+        lastname = _contacts[i].get_lastname();
+        nickname = _contacts[i].get_nickname();
+
+        std::cout << "|" << std::setw(10) << i << "|";
+        std::cout << "|" << std::setw(10) << firstname << "|";
+        std::cout << "|" << std::setw(10) << lastname << "|";
+        std::cout << "|" << std::setw(10) << nickname << "|";
+        std::cout << std::endl;
+        
+    }
+
+
+
 
 }
 

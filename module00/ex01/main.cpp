@@ -25,7 +25,7 @@ int main ()
             phonebook.add_contact();
             
         else if (input == "SEARCH")
-            std::cout << "hoi";
+            phonebook.search_contact();
         else if (input == "EXIT")
             return (0);
         else
