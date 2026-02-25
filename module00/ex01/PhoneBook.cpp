@@ -15,13 +15,6 @@ PhoneBook::~PhoneBook()
 
 void    PhoneBook::add_contact()
 {
-    /*
-     If the user enters this command, they are prompted to input the information
-     of the new contact one field at a time. Once all the fields have been completed,
-     add the contact to the phonebook.
-     ◦ The contact fields are: first name, last name, nickname, phone number, and
-     darkest secret. A saved contact can’t have empty fields.
-    */
     std::string firstname, lastname, nickname, phonenumber, darkestsecret;
 
     while (true)
@@ -88,56 +81,63 @@ void    PhoneBook::add_contact()
     this->_index++;
     if (this->_count != 8)
         this->_count++;
-    
-
 }
 
 void    PhoneBook::search_contact()
 {
-    /*
-    ◦ Display the saved contacts as a list of 4 columns: index, first name, last
-    name and nickname.
-    ◦ Each column must be 10 characters wide. A pipe character (’|’) separates
-    them. The text must be right-aligned. If the text is longer than the column,
-    it must be truncated and the last displayable character must be replaced by a
-    dot (’.’).
-    ◦ Then, prompt the user again for the index of the entry to display. If the index
-    is out of range or wrong, define a relevant behavior. Otherwise, display the
-    contact information, one field per line.
-    */
-    
-    //setw as set width
-    // right to align text right 
-    // |     index|first name| last name|  nickname|
 
     std::string firstname, lastname, phonenumber, nickname;
-
+    int         index = 0;
+    
+    //interface
     std::cout << "|" << std::setw(10) << "Index" << "|";
-    std::cout << "|" << std::setw(10) << "Firstname" << "|";
-    std::cout << "|" << std::setw(10) << "Lastname" << "|";
-    std::cout << "|" << std::setw(10) << "Nickname" << "|";
+    std::cout << std::setw(10) << "Firstname" << "|";
+    std::cout << std::setw(10) << "Lastname" << "|";
+    std::cout << std::setw(10) << "Nickname" << "|";
     std::cout << std::endl;
 
+    //print array
     for (int i = 0; i < this->_count; i++)
     {
         firstname = _contacts[i].get_firstname();
         lastname = _contacts[i].get_lastname();
         nickname = _contacts[i].get_nickname();
 
+        if (firstname.length() > 10)
+        {
+            firstname = firstname.substr(0, 9) + ".";
+        }
+         if (lastname.length() > 10)
+        {
+            lastname = lastname.substr(0, 9) + ".";
+        }
+         if (nickname.length() > 10)
+        {
+            nickname = nickname.substr(0, 9) + ".";
+        }
+
         std::cout << "|" << std::setw(10) << i << "|";
-        std::cout << "|" << std::setw(10) << firstname << "|";
-        std::cout << "|" << std::setw(10) << lastname << "|";
-        std::cout << "|" << std::setw(10) << nickname << "|";
-        std::cout << std::endl;
-        
+        std::cout << std::setw(10) << firstname << "|";
+        std::cout << std::setw(10) << lastname << "|";
+        std::cout << std::setw(10) << nickname << "|";
+        std::cout << std::endl;   
     }
-
-
-
-
+    if (_count > 0)
+    {
+        std::cout << "gief index mannn bomboclat" << std::endl;
+        while (true)
+        {
+        std::cin >> index;
+        std::cin.ignore();
+        if (index <= _count && index >= 0)
+            break;
+        }
+        
+        std::cout << "Firstname: " <<_contacts[index].get_firstname() << std::endl;
+        std::cout << "Lastname: " <<_contacts[index].get_lastname() << std::endl;
+        std::cout << "Nickname: " <<_contacts[index].get_nickname() << std::endl;
+        std::cout << "Phonenumber: " <<_contacts[index].get_phonenumber() << std::endl;
+        std::cout << "Dark secret: " <<_contacts[index].get_darksecret() << std::endl;
+    }
 }
 
-void    exit()
-{
-    exit(0);
-}
