@@ -50,6 +50,6 @@ int main(int argc, char **argv)
 
     }
     return (0);
-    //if arguments, then check if lowercase alphabet and use toupper, and print char by char
+
 }
 

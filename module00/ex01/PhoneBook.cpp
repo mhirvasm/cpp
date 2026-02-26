@@ -89,14 +89,17 @@ void    PhoneBook::search_contact()
     std::string firstname, lastname, phonenumber, nickname;
     int         index = 0;
     
-    //interface
-    std::cout << "|" << std::setw(10) << "Index" << "|";
-    std::cout << std::setw(10) << "Firstname" << "|";
-    std::cout << std::setw(10) << "Lastname" << "|";
-    std::cout << std::setw(10) << "Nickname" << "|";
-    std::cout << std::endl;
-
     //print array
+    if (_count > 0)
+    {
+        //interface
+        std::cout << "|" << std::setw(10) << "Index" << "|";
+        std::cout << std::setw(10) << "Firstname" << "|";
+        std::cout << std::setw(10) << "Lastname" << "|";
+        std::cout << std::setw(10) << "Nickname" << "|";
+        std::cout << std::endl;
+
+    }
     for (int i = 0; i < this->_count; i++)
     {
         firstname = _contacts[i].get_firstname();
@@ -124,13 +127,23 @@ void    PhoneBook::search_contact()
     }
     if (_count > 0)
     {
-        std::cout << "gief index mannn bomboclat" << std::endl;
+        std::cout << "Give index number to watch more information" << std::endl;
         while (true)
         {
-        std::cin >> index;
+        if (!(std::cin >> index))
+        {
+            std::cin.clear(); // Reset error state
+            std::cin.ignore(10000, '\n'); // Frees the buffer
+            std::cout << "Invalid index! Please enter a number." << std::endl;
+            continue ;
+        }
         std::cin.ignore();
-        if (index <= _count && index >= 0)
+        if (index < _count && index >= 0)
             break;
+        else 
+        {
+            std::cout << "Give a valid number between: 0" << " and " << _count - 1 << std::endl;  
+        }
         }
         
         std::cout << "Firstname: " <<_contacts[index].get_firstname() << std::endl;
@@ -138,6 +151,10 @@ void    PhoneBook::search_contact()
         std::cout << "Nickname: " <<_contacts[index].get_nickname() << std::endl;
         std::cout << "Phonenumber: " <<_contacts[index].get_phonenumber() << std::endl;
         std::cout << "Dark secret: " <<_contacts[index].get_darksecret() << std::endl;
+    }
+    else 
+    {
+        std::cout << "Phonebook is empty." << std::endl;
     }
 }
 

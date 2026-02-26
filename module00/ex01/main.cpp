@@ -12,7 +12,7 @@ int main ()
 {
     std::string input;
     PhoneBook phonebook;
-    //make the loop here
+    
     while(1 == 1)
     {
         print_welcome();
@@ -32,7 +32,7 @@ int main ()
         else if (input == "EXIT")
             return (0);
         else
-            std::cout << "Bad input";
+            std::cout << "Use the available commands provided: ADD, SEARCH or EXIT";
         std::endl (std::cout);
     } 
 }
