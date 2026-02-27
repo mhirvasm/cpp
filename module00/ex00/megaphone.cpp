@@ -1,23 +1,3 @@
-/*
-$>./megaphone "shhhhh... I think the students are asleep..."
-SHHHHH... I THINK THE STUDENTS ARE ASLEEP...
-
-$>./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
-DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF.
-
-$>./megaphone
-* LOUD AND UNBEARABLE FEEDBACK NOISE *
-
-$>*/
-
-//funny things in :
-// statements can be split into different lines.
-// maybe make the upper by moving bits? check if can
-//i++, i-- initalizations 
-
-//bool yes = !false
-//bool no = !yes
-
 #include <iostream> //input and output
 #include <string> //string manipulation
 #include <cctype> //toupper
