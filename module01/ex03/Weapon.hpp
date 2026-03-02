@@ -11,8 +11,8 @@ class Weapon
     public:
             Weapon(std::string weapon);
             ~Weapon();
-            getType(void);
-            setType(std::string type);
+            void getType(void);
+            void setType(std::string type);
 
 };
 
