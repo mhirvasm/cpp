@@ -15,5 +15,4 @@ class HumanA
             void attack(void); //create attack function
 
 };
-
 #endif

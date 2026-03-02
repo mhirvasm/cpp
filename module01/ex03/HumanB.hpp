@@ -12,7 +12,7 @@ class HumanB
 
     public:
             HumanB(std::string name); // create constructor function
-            void setWeapon(Weapon* weapon); // create this function 
+            void setWeapon(Weapon& weapon); // create this function 
             void attack(void); //create attack function
 
 };

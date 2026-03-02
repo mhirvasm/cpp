@@ -1,9 +1,8 @@
 #include "HumanA.hpp"
 #include "Weapon.hpp"
 
-HumanA::HumanA(std::string name, Weapon& weapon)
+//intialization list
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
 {
-    this->_name = name;
-    this->_weapon = weapon;
-    
+    //we cant use here the this-> syntax, because the reference must be created at the sametime as the object is created
 }

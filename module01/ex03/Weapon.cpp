@@ -8,11 +8,11 @@ Weapon::~Weapon()
 {
 
 }
-void Weapon::getType(void)
+const std::string Weapon::getType(void)
 {
 
 }
 void Weapon::setType(std::string type)
 {
-
+    
 }
