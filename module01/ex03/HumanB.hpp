@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Weapon.hpp"
+#include <iostream>
 
 class HumanB
 {
@@ -11,10 +12,9 @@ class HumanB
             Weapon* _weapon; //Use the pointer, so object can be "unarmed" or weapon "changed"
 
     public:
-            HumanB(std::string name); // create constructor function
-            void setWeapon(Weapon& weapon); // create this function 
-            void attack(void); //create attack function
-
+            HumanB(std::string name);
+            void setWeapon(Weapon& weapon);
+            void attack(void); 
 };
 
 #endif
