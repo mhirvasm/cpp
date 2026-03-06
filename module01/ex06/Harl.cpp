@@ -44,7 +44,7 @@ void Harl::complain(std::string level)
             this->error();
             break;
         default:
-            //handle the scenario where levelIndex is still -1 (invalid input)
+            std::cout << "Invalid input." << std::endl;
             break;
     }
     return ;
