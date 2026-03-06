@@ -1,11 +1,15 @@
-#include <iostream> //basic input output
-#include <fstream> // filemanipulation
-#include <string> //string manipulation 
-#include <cstring>
+#include "Harl.hpp"
 
 int main()
 {
+    Harl harl;
+    
+    harl.complain("DEBUG");
+    harl.complain("INFO");
+    harl.complain("WARNING");
+    harl.complain("ERROR");
 
-
+    harl.complain("");
+    harl.complain("1");
     return 0;
 }
