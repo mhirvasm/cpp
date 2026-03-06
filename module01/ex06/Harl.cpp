@@ -21,17 +21,31 @@ void Harl::complain(std::string level)
 {
     //we create the "keys"
     std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
-    
+    int levelIndex = -1; 
     int numLevels = sizeof(levels) / sizeof(levels[0]);
 
-    //this is the counterpart "lock"
-    void (Harl::*functions[4])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
-
-    //loop through search for match
+    //loop through to get the indexLevel
     for (int i = 0; i < numLevels; i++)
     {
         if (level == levels[i])
-            (this->*functions[i])();
+            levelIndex = i;
+            
+    }
+    //fall through switch
+    switch (levelIndex) 
+    {
+        case 0:
+            this->debug();
+        case 1:
+            this->info();
+        case 2:
+            this->warning();
+        case 3:
+            this->error();
+            break;
+        default:
+            //handle the scenario where levelIndex is still -1 (invalid input)
+            break;
     }
     return ;
 
