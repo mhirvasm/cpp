@@ -37,3 +37,24 @@
     {
         this->_fixed = raw;
     }
+
+    //EX01 additions
+    Fixed::Fixed(const int int_val) : _fixed(int_val << _fractionalBits)
+    {
+        std::cout << "Int constructor called\n";
+    }
+
+    Fixed::Fixed(const float float_val) :
+    {
+        std::cout << "Float constructor called\n";
+    }
+
+    float Fixed::toFloat(void) const
+    {
+
+    }
+
+    int Fixed::toInt(void) const
+    {
+
+    }

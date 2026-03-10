@@ -2,6 +2,7 @@
 # define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 //OCF is standardized way to make sure memory management and copying is being done safely and predictably 
 
@@ -20,6 +21,12 @@ class Fixed
     Fixed& operator=(const Fixed& other);
     //destructor
     ~Fixed();
+    
+    //EX01 additions
+    Fixed(const int int_val);
+    Fixed(const float float_val);
+    float toFloat(void) const;
+    int toInt(void) const;
 
     //that returns the raw value of the fixed-point value.
     int getRawBits(void) const;
@@ -27,5 +34,4 @@ class Fixed
     void setRawBits(int const raw);
 
 };
-
 #endif
