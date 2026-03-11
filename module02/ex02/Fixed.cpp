@@ -132,23 +132,30 @@
     //pre increments
     Fixed& Fixed::operator++(void)
     {
-
+        this->_fixed++;
+        return (*this);
     }
 
     Fixed& Fixed::operator--(void)
     {
-
+        this->_fixed--;
+        return (*this);
     }
 
     //post increments
     Fixed Fixed::operator++(int) //dummy parameter
     {
-
+        Fixed temp = *this; // as we can see post increment needs to create temporary copy
+        ++this->_fixed;     // which means that its not as efficient as pre incrementing
+        return (temp); 
     }
 
     Fixed Fixed::operator--(int)  //dummy parameter
     {
-
+        //another style for post increment/decrement
+        Fixed temp(*this); // take a snapshot
+        --(*this); //here we are using our own pre increment
+        return (temp);
     }
 
     //min and max functions
