@@ -32,6 +32,37 @@ class Fixed
     //that sets the raw value of the fixed-point number
     void setRawBits(int const raw);
 
+    //overload operators
+
+    //comparison operators
+    bool operator>(const Fixed& other) const;
+    bool operator<(const Fixed& other) const;
+    bool operator>=(const Fixed& other) const;
+    bool operator<=(const Fixed& other) const;
+    bool operator==(const Fixed& other) const;
+    bool operator!=(const Fixed& other) const;
+
+    //arithmetic operators
+    Fixed operator+(const Fixed& other);
+    Fixed operator-(const Fixed& other);
+    Fixed operator*(const Fixed& other);
+    Fixed operator/(const Fixed& other);
+
+    //increment and decrement
+    //pre increments
+    Fixed& operator++(void);
+    Fixed& operator--(void);
+    //post increments
+    Fixed operator++(int); //dummy parameter
+    Fixed operator--(int); //dummy parameter
+
+    //min and max functions
+    //const ones
+    static const Fixed& max(const Fixed& obj1, const Fixed& obj2);
+    static const Fixed& min(const Fixed& obj1, const Fixed& obj2);
+    //non const
+    static Fixed& max(Fixed& obj1, Fixed& obj2);
+    static Fixed& min(Fixed& obj1, Fixed& obj2);
 };
     //This needs to be added outside of the class
     std::ostream& operator<<(std::ostream& out, const Fixed& fixed_obj);

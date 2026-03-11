@@ -70,3 +70,103 @@
         out << fixed_obj.toFloat();
         return (out);
     }
+
+    //ex02 ---->
+    bool Fixed::operator>(const Fixed& other) const
+    {
+        if (this->_fixed > other._fixed) 
+            return (true);
+        else
+            return (false);
+    }
+
+    bool Fixed::operator<(const Fixed& other) const
+    {
+        return (this->_fixed < other._fixed); // <-- Cleaner way
+    }
+
+    bool Fixed::operator>=(const Fixed& other) const
+    {
+        return (this->_fixed >= other._fixed);
+    }
+    bool Fixed::operator<=(const Fixed& other) const
+    {
+        return (this->_fixed <= other._fixed);
+    }
+
+    bool Fixed::operator==(const Fixed& other) const
+    {
+        return (this->_fixed == other._fixed);
+    }
+
+    bool Fixed::operator!=(const Fixed& other) const
+    {
+        return (this->_fixed != other._fixed);
+    }
+
+    //arithmetic operators
+    Fixed operator+(const Fixed& other)
+    {
+
+    }
+
+    Fixed operator-(const Fixed& other)
+    {
+
+    }
+
+    Fixed operator*(const Fixed& other)
+    {
+
+    }
+
+    Fixed operator/(const Fixed& other)
+    {
+
+    }
+
+    //increment and decrement
+    //pre increments
+    Fixed& operator++(void)
+    {
+
+    }
+
+    Fixed& operator--(void)
+    {
+
+    }
+
+    //post increments
+    Fixed operator++(int) //dummy parameter
+    {
+
+    }
+
+    Fixed operator--(int)  //dummy parameter
+    {
+
+    }
+
+    //min and max functions
+    //const ones
+    static const Fixed& max(const Fixed& obj1, const Fixed& obj2)
+    {
+
+    }
+
+    static const Fixed& min(const Fixed& obj1, const Fixed& obj2)
+    {
+
+    }
+
+    //non const
+    static Fixed& max(Fixed& obj1, Fixed& obj2)
+    {
+
+    }
+
+    static Fixed& min(Fixed& obj1, Fixed& obj2)
+    {
+
+    }
