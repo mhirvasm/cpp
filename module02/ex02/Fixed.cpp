@@ -105,45 +105,48 @@
     }
 
     //arithmetic operators
-    Fixed operator+(const Fixed& other)
+    Fixed Fixed::operator+(const Fixed& other) const
     {
-
+        Fixed result;
+        result._fixed = this->_fixed + other._fixed; //not so clean, and tighter range of number to use compared to next function style
+        return (result);
     }
 
-    Fixed operator-(const Fixed& other)
+    Fixed Fixed::operator-(const Fixed& other) const
     {
-
+        return Fixed(this->toFloat() - other.toFloat()); // <--- cleaner way 
+        // also when using floats, we can use bigger numbers, than when using just raw data like in +
     }
 
-    Fixed operator*(const Fixed& other)
+    Fixed Fixed::operator*(const Fixed& other) const
     {
-
+        return Fixed(this->toFloat() * other.toFloat());
     }
 
-    Fixed operator/(const Fixed& other)
+    Fixed Fixed::operator/(const Fixed& other) const
     {
-
+        return Fixed(this->toFloat() / other.toFloat());
     }
 
     //increment and decrement
     //pre increments
-    Fixed& operator++(void)
+    Fixed& Fixed::operator++(void)
     {
 
     }
 
-    Fixed& operator--(void)
+    Fixed& Fixed::operator--(void)
     {
 
     }
 
     //post increments
-    Fixed operator++(int) //dummy parameter
+    Fixed Fixed::operator++(int) //dummy parameter
     {
 
     }
 
-    Fixed operator--(int)  //dummy parameter
+    Fixed Fixed::operator--(int)  //dummy parameter
     {
 
     }
