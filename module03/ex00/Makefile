@@ -1,12 +1,12 @@
 # Program name
-NAME      = fixed
+NAME      = inheritance
 # Compiler and flags
 
 CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp Fixed.cpp
+SRC       = main.cpp ClapTrap.cpp
 OBJ       = $(SRC:.cpp=.o)
 
 # Default
