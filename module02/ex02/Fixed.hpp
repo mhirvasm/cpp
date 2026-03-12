@@ -66,4 +66,5 @@ class Fixed
 };
     //This needs to be added outside of the class
     std::ostream& operator<<(std::ostream& out, const Fixed& fixed_obj);
+    
 #endif

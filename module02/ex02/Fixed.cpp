@@ -3,17 +3,17 @@
     //we need default constructor, constructor without arguments
     Fixed::Fixed() : _fixed(0)
     {
-        std::cout << "Default constructor called\n";
+        //std::cout << "Default constructor called\n";
     }
     //copy constructor, creates new object by copying object
     Fixed::Fixed(const Fixed& other) : _fixed(other.getRawBits())
     {
-        std::cout << "Copy constructor called\n";
+        //std::cout << "Copy constructor called\n";
     }
     //copy assignment operator, transfers objects values into another livin object
     Fixed& Fixed::operator=(const Fixed& other)
     {
-        std::cout << "Copy assignment operator called\n";
+        //std::cout << "Copy assignment operator called\n";
         if (this != &other)
         {
             this->_fixed = other._fixed;
@@ -23,13 +23,13 @@
     //destructor
     Fixed::~Fixed()
     {
-        std::cout << "Destructor called\n";
+        //std::cout << "Destructor called\n";
     }
 
     //that returns the raw value of the fixed-point value.
     int Fixed::getRawBits(void) const
     {
-        std::cout << "getRawBits member function called\n";
+        //std::cout << "getRawBits member function called\n";
         return (this->_fixed);
     }
     //that sets the raw value of the fixed-point number
@@ -41,12 +41,12 @@
     //EX01 additions
     Fixed::Fixed(const int int_val) : _fixed(int_val << _fractionalBits)
     {
-        std::cout << "Int constructor called\n";
+        //std::cout << "Int constructor called\n";
     }
 
     Fixed::Fixed(const float float_val)
     {
-        std::cout << "Float constructor called\n";
+        //std::cout << "Float constructor called\n";
 
         this->_fixed = roundf(float_val * (1 << _fractionalBits));
     }
@@ -160,23 +160,36 @@
 
     //min and max functions
     //const ones
-    static const Fixed& max(const Fixed& obj1, const Fixed& obj2)
+    const Fixed& Fixed::max(const Fixed& obj1, const Fixed& obj2)
     {
+        if (obj1 > obj2) // using own operator here
+            return (obj1);
+        else
+            return (obj2);
 
     }
 
-    static const Fixed& min(const Fixed& obj1, const Fixed& obj2)
+    const Fixed& Fixed::min(const Fixed& obj1, const Fixed& obj2)
     {
-
+        if (obj1 < obj2) // using own operator here
+            return (obj1);
+        else
+            return (obj2);
     }
 
     //non const
-    static Fixed& max(Fixed& obj1, Fixed& obj2)
+    Fixed& Fixed::max(Fixed& obj1, Fixed& obj2)
     {
-
+        if (obj1 > obj2) // using own operator here
+            return (obj1);
+        else
+            return (obj2);
     }
 
-    static Fixed& min(Fixed& obj1, Fixed& obj2)
+    Fixed& Fixed::min(Fixed& obj1, Fixed& obj2)
     {
-
+        if (obj1 < obj2) // using own operator here
+            return (obj1);
+        else
+            return (obj2);
     }
