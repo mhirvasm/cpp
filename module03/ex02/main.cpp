@@ -19,8 +19,8 @@ int main(void)
     fraggy.highFivesGuys();
 
     std::cout << "\n===== OCF TESTING =====" << std::endl;
-    FragTrap clone(fraggy);
-    FragTrap clone2 = clone;
+    FragTrap clone(fraggy); // Testing deep copy
+    FragTrap clone2 = clone; // testing copy assignment
 
     std::cout << "\n===== DESTRUCTION PHASE =====" << std::endl;
     
