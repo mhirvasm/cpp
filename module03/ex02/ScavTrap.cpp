@@ -46,7 +46,7 @@
     }
     if (this->_energypoints == 0)
     {
-        std::cout << "ScavTrap " << this->_name << " has no energy left.\n";
+        std::cout << this->_name << " has no energy left.\n";
         return ;
     }
     std::cout << "Scavtrap " << this->_name << " attacks " << target
