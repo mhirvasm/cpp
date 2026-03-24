@@ -7,6 +7,7 @@
 
 int main()
 {
+    
     // --- REQUIRED ARRAY TEST
     std::cout << "--- Creating an array of animals ---" << std::endl;
     const int numAnimals = 4;
@@ -46,8 +47,19 @@ int main()
     Dog a;
     Dog b;
     a = b;
+    
+    
+
+    //ABSTRACT CLASS FAST TEST
+    /*
+    std::cout << "\n--- Trying to instantiate Animal ---" << std::endl;
+    const Animal* meta = new Animal(); // Compiler error inc
+    meta->makeSound();
+    */
+
 
     std::cout << "\n--- End of tests ---" << std::endl;
+
     return 0;    
 
 }
