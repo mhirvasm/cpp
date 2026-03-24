@@ -6,7 +6,7 @@ CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRC       = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ       = $(SRC:.cpp=.o)
 
 # Default

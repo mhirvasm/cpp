@@ -2,7 +2,7 @@
 # define CAT_HPP
 
 #include <iostream>
-#include <Animal.hpp>
+#include "Animal.hpp"
 class Cat : public Animal
 {
     public:
@@ -11,7 +11,7 @@ class Cat : public Animal
             Cat(const Cat& other);
             Cat& operator=(const Cat& other);
             ~Cat();
-            void makeSound() override;
+            void makeSound() const override;
 };
 
 #endif
