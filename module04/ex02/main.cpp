@@ -47,7 +47,7 @@ int main()
     Dog a;
     Dog b;
     a = b;
-    
+
     
 
     //ABSTRACT CLASS FAST TEST

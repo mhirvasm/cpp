@@ -12,6 +12,7 @@ class PhoneBook
         int     _index; //contact indexing
         int     _count; //current contact count
         Contact _contacts[8];
+        bool    _is_valid_index(std::string str) const;
 
     public:
         PhoneBook(); //constructor
@@ -19,7 +20,6 @@ class PhoneBook
 
         void    add_contact();
         void    search_contact();
-        void    exit();
         
 };
 #endif

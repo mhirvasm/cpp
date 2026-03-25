@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
 #include <iomanip> //manipulator functions
+#include <cstdlib> //atoi
 
 //Constructor intializing values
 PhoneBook::PhoneBook()
@@ -20,7 +21,11 @@ void    PhoneBook::add_contact()
     while (true)
     {
     std::cout << "Enter firstname: ";
-    std::getline(std::cin, firstname);
+    if (!std::getline(std::cin, firstname))
+    {
+        std::cout << std::endl; //ctrl+d case
+        return;
+    }
     if (!firstname.empty())
     {
         this->_contacts[this->_index % 8].set_firstname(firstname);
@@ -32,7 +37,11 @@ void    PhoneBook::add_contact()
     while (true)
     {
     std::cout << "Enter lastname: ";
-    std::getline(std::cin, lastname);
+    if (!std::getline(std::cin, lastname))
+    {
+        std::cout << std::endl; //ctrl+d case
+        return;
+    }
     if (!lastname.empty())
     {
         this->_contacts[this->_index % 8].set_lastname(lastname);
@@ -44,7 +53,11 @@ void    PhoneBook::add_contact()
     while (true)
     {
     std::cout << "Enter nickname: ";
-    std::getline(std::cin, nickname);
+    if (!std::getline(std::cin, nickname))
+    {
+        std::cout << std::endl; //ctrl+d case
+        return;
+    }
     if (!nickname.empty())
     {
         this->_contacts[this->_index % 8].set_nickname(nickname);
@@ -57,7 +70,11 @@ void    PhoneBook::add_contact()
     while (true)
     {
     std::cout << "Enter phonenumber: ";
-    std::getline(std::cin, phonenumber);
+    if (!std::getline(std::cin, phonenumber))
+    {
+        std::cout << std::endl; //ctrl+d case
+        return;
+    }
     if (!phonenumber.empty())
     {
         this->_contacts[this->_index % 8].set_phonenumber(phonenumber);
@@ -69,7 +86,11 @@ void    PhoneBook::add_contact()
     while (true)
     {
     std::cout << "Enter darkestsecret: ";
-    std::getline(std::cin, darkestsecret);
+    if (!std::getline(std::cin, darkestsecret))
+    {
+        std::cout << std::endl; //ctrl+d case
+        return;
+    }
     if (!darkestsecret.empty())
     {
         this->_contacts[this->_index % 8].set_darksecret(darkestsecret);
@@ -128,33 +149,56 @@ void    PhoneBook::search_contact()
     if (_count > 0)
     {
         std::cout << "Give index number to watch more information" << std::endl;
+        if (this->_count > 0)
+    {
+        std::string input;
         while (true)
         {
-        if (!(std::cin >> index))
-        {
-            std::cin.clear(); // Reset error state
-            std::cin.ignore(10000, '\n'); // Frees the buffer
-            std::cout << "Invalid index! Please enter a number." << std::endl;
-            continue ;
+            std::cout << "Enter index to display: ";
+            if (!std::getline(std::cin, input)) // Hallitsee Ctrl+D (EOF)
+                return;
+
+            if (_is_valid_index(input))
+            {
+                index = std::atoi(input.c_str());
+                std::cout << "Firstname: " << _contacts[index].get_firstname() << std::endl;
+                std::cout << "Lastname: " <<_contacts[index].get_lastname() << std::endl;
+                std::cout << "Nickname: " <<_contacts[index].get_nickname() << std::endl;
+                std::cout << "Phonenumber: " <<_contacts[index].get_phonenumber() << std::endl;
+                std::cout << "Dark secret: " <<_contacts[index].get_darksecret() << std::endl;
+                break;
+            }
+            else
+            {
+                std::cout << "Invalid index! Enter a number between 0 and " << _count - 1 << "." << std::endl;
+            }
         }
-        std::cin.ignore();
-        if (index < _count && index >= 0)
-            break;
+    }
+}
         else 
         {
-            std::cout << "Give a valid number between: 0" << " and " << _count - 1 << std::endl;  
+            std::cout << "Phonebook is empty." << std::endl;
         }
-        }
-        
-        std::cout << "Firstname: " <<_contacts[index].get_firstname() << std::endl;
-        std::cout << "Lastname: " <<_contacts[index].get_lastname() << std::endl;
-        std::cout << "Nickname: " <<_contacts[index].get_nickname() << std::endl;
-        std::cout << "Phonenumber: " <<_contacts[index].get_phonenumber() << std::endl;
-        std::cout << "Dark secret: " <<_contacts[index].get_darksecret() << std::endl;
-    }
-    else 
+}
+
+bool PhoneBook::_is_valid_index(std::string str) const
+{
+    // check empty input
+    if (str.empty())
+        return false;
+
+    // Check that all char are digits
+    for (std::string::size_type i = 0; i < str.length(); i++)
     {
-        std::cout << "Phonebook is empty." << std::endl;
+        if (!std::isdigit(str[i]))
+            return false;
     }
+
+    // transform into a number and check that its valid 
+    int index = std::atoi(str.c_str());
+    if (index >= 0 && index < this->_count)
+        return true;
+
+    return false;
 }
 

@@ -16,7 +16,11 @@ int main ()
     while(1 == 1)
     {
         print_welcome();
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input)) // Fixing ctrl+d scenario
+        {
+            std::cout << std::endl;
+            break;
+        }
         if (input == "ADD")
         {
             phonebook.add_contact();
@@ -33,7 +37,7 @@ int main ()
             return (0);
         else
             std::cout << "Use the available commands provided: ADD, SEARCH or EXIT";
-        std::endl (std::cout);
+        std::cout << std::endl;
     } 
 }
  
