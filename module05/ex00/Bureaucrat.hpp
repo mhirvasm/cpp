@@ -17,9 +17,8 @@ class Bureaucrat
             constructor.*/
     public:
             Bureaucrat(std::string name);
-            ~Bureaucrat();
-            void getName();
-            void getGrade();
+            std::string getName() const;
+            size_t getGrade() const;
             void increment();
             void decrement();
 
