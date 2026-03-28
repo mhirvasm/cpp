@@ -15,9 +15,20 @@ class Bureaucrat
             also implement two member functions to increment or decrement the bureaucrat’s grade.
             If the grade goes out of range, both functions must throw the same exceptions as the
             constructor.*/
+    public:
+            Bureaucrat(std::string name);
+            ~Bureaucrat();
+            void getName();
+            void getGrade();
+            void increment();
+            void decrement();
 
-            //BIG 4 
+ 
+
+           
 };
+
+std::ostream& operator<<(std::ostream& out, Bureaucrat const& rhs); //<name>, bureaucrat grade <grade> <----- FORMAT to print
 
 
 #endif
