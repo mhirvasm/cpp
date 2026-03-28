@@ -7,7 +7,7 @@ class Bureaucrat
 {
     private:
             std::string const _name;
-            size_t            _grade; //Any attempt to instantiate a Bureaucrat with an invalid grade must throw an exception:
+            int            _grade; //Any attempt to instantiate a Bureaucrat with an invalid grade must throw an exception:
                                       //either a Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.
 
             /*
@@ -16,9 +16,9 @@ class Bureaucrat
             If the grade goes out of range, both functions must throw the same exceptions as the
             constructor.*/
     public:
-            Bureaucrat(std::string name);
+            Bureaucrat(std::string name, int grade);
             std::string getName() const;
-            size_t getGrade() const;
+            int getGrade() const;
             void increment();
             void decrement();
 
