@@ -5,11 +5,11 @@ _name(name)
 {
     if (grade < 1)
     {
-        throw Bureaucrat::GradeTooHighException();
+        throw GradeTooHighException();
     }
     if (grade > 150)
     {
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
     }
     _grade = grade;
 }
@@ -27,13 +27,21 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::increment()
 {
     _grade--;
-    //prolly try catch here
+    if (_grade < 1)
+    {
+        _grade++;
+        throw GradeTooHighException();
+    }
 }
 
 void Bureaucrat::decrement()
 {
     _grade++;
-    //prolly try catch here
+    if (_grade > 150)
+    {
+        _grade--;
+        throw GradeTooLowException();
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, Bureaucrat const& rhs)
@@ -43,13 +51,12 @@ std::ostream& operator<<(std::ostream& out, Bureaucrat const& rhs)
     return (out);
 }
 
-/*
-try
+const char* GradeTooHighException::what() const throw()
 {
-/do some stuff with bureaucrats/
+    return ("Grade is too High!");
 }
-catch (std::exception & e)
+
+const char* GradeTooLowException::what() const throw()
 {
-/handle exception/
+    return ("Grade is too Low!");
 }
-*/

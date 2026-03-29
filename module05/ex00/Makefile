@@ -6,7 +6,7 @@ CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp 
+SRC       = main.cpp Bureaucrat.cpp
 OBJ       = $(SRC:.cpp=.o)
 
 # Default
