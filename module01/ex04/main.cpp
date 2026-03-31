@@ -55,12 +55,12 @@ int main(int argc, char **argv)
         std::cerr << "Error: Opening file " << std::endl;
         return (1);
     }
-    //Now we need to read from 1st file, take a line, if there is occurance
+    //Now we need to read from 1st file, take a line, if there is occurrence
     //if there is, we use remove, and then add. and then we add position the len of str2
     std::string currentStr;
     std::string modified;
     std::size_t position;
-    //std::size_t position = 0;
+
     
     while(getline(MyFile, currentStr))
     {

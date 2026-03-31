@@ -5,14 +5,15 @@
 
 int main()
 {
-    {
+        {
         Weapon club = Weapon("crude spiked club");
         HumanA bob("Bob", club);
         bob.attack();
         club.setType("flowers");
         bob.attack();
-    }
-    {
+        std::cout << std::endl;
+        }
+        {
         Weapon club = Weapon("crude spiked club");
         HumanB jim("Jim");
         jim.attack();
@@ -20,8 +21,9 @@ int main()
         jim.attack();
         club.setType("bazooka");
         jim.attack();
-        club.setType("");
+        club.setType(""); //type is not changed if its not specified
         jim.attack();
-    }
+        }
+    
     return 0;
 }
