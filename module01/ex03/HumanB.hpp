@@ -9,12 +9,12 @@ class HumanB
 {
     private:
             std::string _name;
-            Weapon* _weapon; //Use the pointer, so object can be "unarmed" or weapon "changed"
+            const Weapon* _weapon; //Use the pointer, so object can be "unarmed" or weapon "changed"
 
     public:
             HumanB(std::string name);
-            void setWeapon(Weapon& weapon);
-            void attack(void); 
+            void setWeapon(const Weapon& weapon);
+            void attack(void) const; 
 };
 
 #endif

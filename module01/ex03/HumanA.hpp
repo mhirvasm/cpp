@@ -9,11 +9,12 @@ class HumanA
 {
     private:
             std::string _name;
-            Weapon& _weapon; //Use the reference, because object is constructed with specific weapon
+            const Weapon& _weapon; //Use the reference, because object is constructed with specific weapon
 
     public:
-            HumanA(std::string name, Weapon& weapon); //create constructor function
-            void attack(void); //create attack function
+            HumanA(std::string name, const Weapon& weapon); //create constructor function
+            void attack(void) const; //create attack function
 
 };
+
 #endif
