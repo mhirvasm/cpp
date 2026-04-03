@@ -16,7 +16,7 @@
         //std::cout << "Copy assignment operator called\n";
         if (this != &other)
         {
-            this->_fixed = other._fixed;
+            this->_fixed = other.getRawBits();
         }
         return (*this);
     }
@@ -108,24 +108,29 @@
     Fixed Fixed::operator+(const Fixed& other) const
     {
         Fixed result;
-        result._fixed = this->_fixed + other._fixed; //not so clean, and tighter range of number to use compared to next function style
+        result._fixed = this->_fixed + other._fixed;
         return (result);
     }
 
     Fixed Fixed::operator-(const Fixed& other) const
     {
-        return Fixed(this->toFloat() - other.toFloat()); // <--- cleaner way 
-        // also when using floats, we can use bigger numbers, than when using just raw data like in +
+        Fixed result;
+        result._fixed = this->_fixed - other._fixed;
+        return (result);
     }
 
     Fixed Fixed::operator*(const Fixed& other) const
     {
-        return Fixed(this->toFloat() * other.toFloat());
+        Fixed result;
+        result._fixed = ((long long)this->_fixed * (long long)other._fixed) >> _fractionalBits;
+        return (result);
     }
 
     Fixed Fixed::operator/(const Fixed& other) const
     {
-        return Fixed(this->toFloat() / other.toFloat());
+        Fixed result;
+        result._fixed = ((long long)this->_fixed << _fractionalBits) / (long long)other._fixed;
+        return (result);
     }
 
     //increment and decrement

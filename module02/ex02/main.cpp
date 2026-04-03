@@ -51,7 +51,7 @@ int main(void)
     Fixed const num2(2);
 
     // we test subtraction and division, comparing them to expected float outputs
-    std::cout << "50.5 - 2 = " << (num1 - num2) << " (Expected: 48.5)" << std::endl;
+    std::cout << "50.5 - 2 = " <<(num1 - num2) << " (Expected: 48.5)" << std::endl;
     std::cout << "50.5 / 2 = " << (num1 / num2) << " (Expected: 25.25)" << std::endl;
 
     // A chained arithmetic test! (Order of operations)
