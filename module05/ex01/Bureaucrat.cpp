@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() :
 _name("Unnamed"),
@@ -45,7 +46,7 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureaucrat " << _name << " destructor called.\n";
 }
 
-std::string Bureaucrat::getName() const
+const std::string Bureaucrat::getName() const
 {
     return (_name);
 }
@@ -90,4 +91,9 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return ("Grade is too Low!");
+}
+
+void Bureaucrat::signForm()
+{
+    
 }

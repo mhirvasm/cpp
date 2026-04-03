@@ -7,8 +7,8 @@
 class Bureaucrat
 {
     private:
-        std::string const _name;
-        int            _grade; //Any attempt to instantiate a Bureaucrat with an invalid grade must throw an exception:
+        const std::string _name;
+        int               _grade; //Any attempt to instantiate a Bureaucrat with an invalid grade must throw an exception:
                                 //either a Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.
 
         /*
@@ -18,7 +18,7 @@ class Bureaucrat
         constructor.*/
     public:
         Bureaucrat();
-        Bureaucrat(std::string name, int grade);
+        Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();

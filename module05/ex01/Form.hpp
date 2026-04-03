@@ -2,6 +2,9 @@
 # define FORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -10,6 +13,7 @@ class Form
             bool              _signed;
             const int         _signGrade;
             const int         _execGrade;
+            int _generateRandomGrade() const; // to be used in intialization with default constructor
 
     public:
             Form();
@@ -17,10 +21,12 @@ class Form
             Form& operator=(const Form& other);
             ~Form();
 
-            std::string getName() const;
-            bool        getSigned();
-            const int   getSignGrade() const;
-            const int   getExecGrade() const;
+            const std::string   getName() const;
+            bool                getSigned() const;
+            int           getSignGrade() const;
+            int           getExecGrade() const;
+
+            void beSigned(const Bureaucrat& object);
 
             class GradeTooHighException : public std::exception
             {
