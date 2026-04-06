@@ -16,7 +16,7 @@
         std::cout << "Copy assignment operator called\n";
         if (this != &other)
         {
-            this->_fixed = other._fixed;
+            this->_fixed = other.getRawBits();
         }
         return (*this);
     }

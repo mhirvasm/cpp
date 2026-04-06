@@ -16,7 +16,7 @@
         std::cout << "Copy assignment operator called\n";
         if (this != &other)
         {
-            this->_fixed = other._fixed;
+            this->_fixed = other.getRawBits();
         }
         return (*this);
     }
@@ -48,7 +48,7 @@
     {
         std::cout << "Float constructor called\n";
 
-        this->_fixed = roundf(float_val * (1 << _fractionalBits));
+        this->_fixed = std::roundf(float_val * (1 << _fractionalBits));
     }
 
     float Fixed::toFloat(void) const

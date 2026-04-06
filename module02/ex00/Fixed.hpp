@@ -8,8 +8,8 @@
 class Fixed
 {
     private:
-            int _fixed;
-            static const int _fractionalBits = 8;
+            int              _fixed;
+            static const int _fractionalBits = 8; //with this being static, the variable is shared all of the classes
 
     public:
     //we need default constructor, constructor without arguments

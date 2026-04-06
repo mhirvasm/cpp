@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <iomanip>
 
 int main(void)
 {
@@ -18,19 +19,26 @@ int main(void)
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-    //zero tests
-    Fixed const zero(0.0f);
-    std::cout << "divide by zero test " << zero.toFloat() << std::endl;
-    std::cout << "divide by zero test " << zero.toInt() << " as integer" << std::endl;
-    //precision loss tests
-    Fixed const precision(42.42424242f);
-    std::cout << precision << std::endl;
 
-    //Showing overlofw
+
+    //Showing overflow
     Fixed const maxSafeInt(8388607); //Biggest possible int number which 
     std::cout << "Max safe int (8388607): " << maxSafeInt << " (as float: " << maxSafeInt.toFloat() << ")" << std::endl;
 
     //here happens the overflow 
     Fixed const overflowTest(8388608);
     std::cout << "Overflow test (8388608): " << overflowTest << std::endl;
+
+
+    std::cout << "\n--- PRECISION AND RANGE TEST ---" << std::endl;
+    Fixed const highPrecision(42.00390625f);
+    Fixed const largeNumber(30000.5f);
+    
+    std::cout << "Target: 42.00390625 | Result: " << std::fixed << std::setprecision(10) << highPrecision << std::endl;
+    std::cout << "Target: 30000.5     | Result: " << largeNumber << std::endl;
+
+    //precision loss tests
+    std::cout << "Precision testing" << std::endl;
+    Fixed const precision(42.42424242f);
+    std::cout << precision << std::endl;
 }

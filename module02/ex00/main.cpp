@@ -2,6 +2,7 @@
 
 int main(void)
 {
+    //std::cout << "Size of int: " << sizeof(int) << std::endl;
     Fixed a;
     Fixed b( a );
     Fixed c;
