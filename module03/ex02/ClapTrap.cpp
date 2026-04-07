@@ -93,15 +93,11 @@ void ClapTrap::beRepaired(unsigned int amount)
         std::cout << this->_name << " has no energy left.\n";
         return ;
     }
-    if (amount > (unsigned int)_energypoints)
-    {
-        std::cout << _name << " has not enough energy\n";
-    }
     else
     {
-        _energypoints = _energypoints - amount;
         _hitpoints = _hitpoints + amount;
         std::cout << _name << " healed " << amount << " and has now " << _hitpoints << " health!\n";
+        _energypoints--;
         return ;
     }
 }

@@ -17,7 +17,6 @@ int main(void)
     std::cout << "\n===== BUILDING PHASE =====" << std::endl;
 
     ClapTrap baseRobot("Clappy");
-    
     ScavTrap scavvy("Scavvy");
 
     std::cout << "\n===== ACTION PHASE =====" << std::endl;
@@ -25,15 +24,12 @@ int main(void)
     scavvy.attack("Target B");
 
     std::cout << "\n===== INHERITANCE PHASE =====" << std::endl;
-
-    scavvy.takeDamage(50); // HP putoaa: 100 -> 50
+    scavvy.takeDamage(50); // HP from 100 to 50
     std::cout << "^It says ClapTrap, beacuse we inherit the the takeDamage function from clapTrap\n";
-    scavvy.beRepaired(20); // HP nousee: 50 -> 70
+    scavvy.beRepaired(20); // HP increases from 50 to 70
 
     std::cout << "\n===== SPECIAL ABILITY PHASE =====" << std::endl;
-    
     scavvy.guardGate();
-
     std::cout << "\n===== DESTRUCTION PHASE =====" << std::endl;
 
     return (0);

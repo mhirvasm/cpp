@@ -6,6 +6,11 @@
 
 int main(void)
 {
+    ClapTrap* trap = new DiamondTrap();
+    trap->attack("target1");
+
+    delete trap;
+
     std::cout << "\n\033[36m===== 1. BUILDING PHASE (VIRTUAL INHERITANCE) =====\033[0m\n" << std::endl;
     DiamondTrap diamond("Monster");
 
