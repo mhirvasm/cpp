@@ -28,7 +28,6 @@
         if (this != &other)
         {
             ClapTrap::operator=(other);
-            
         }
         return (*this);
     }
