@@ -22,7 +22,7 @@ class ClapTrap
             void beRepaired(unsigned int amount);
 
             
-            ~ClapTrap();
+            virtual ~ClapTrap();
 };
 
 # endif
