@@ -47,6 +47,7 @@ int main()
     i2->makeSound(); // Calls base class method because it lacks the virtual keyword
     delete meta2; // deletes wrongAnimal
     delete i2; // DANGER
+
     //Since the destructor is not virtual, the derived class destructor is never called, which leads to undefined behavior or memory leaks if the child has allocated resources
 
 return 0;
