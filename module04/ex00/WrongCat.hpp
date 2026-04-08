@@ -3,14 +3,16 @@
 
 # include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal {
-public:
-    WrongCat();
-    WrongCat(const WrongCat& other);
-    WrongCat& operator=(const WrongCat& other);
-    ~WrongCat();
+class WrongCat : public WrongAnimal 
+{
 
-    void makeSound() const;
+    public:
+            WrongCat();
+            WrongCat(const WrongCat& other);
+            WrongCat& operator=(const WrongCat& other);
+            ~WrongCat();
+
+            void makeSound() const;
 };
 
 #endif

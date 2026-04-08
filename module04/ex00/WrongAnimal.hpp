@@ -5,18 +5,19 @@
 # include <string>
 
 class WrongAnimal {
-protected:
-    std::string type;
 
-public:
-    // Orthodox Canonical Form
-    WrongAnimal();
-    WrongAnimal(const WrongAnimal& other);
-    WrongAnimal& operator=(const WrongAnimal& other);
-    ~WrongAnimal(); // Not virtual anymore
+    protected:
+            std::string type;
 
-    void makeSound() const; // Not virtual anymore
-    std::string getType() const;
+    public:
+            // Orthodox Canonical Form
+            WrongAnimal();
+            WrongAnimal(const WrongAnimal& other);
+            WrongAnimal& operator=(const WrongAnimal& other);
+            ~WrongAnimal(); // Not virtual anymore
+
+            void makeSound() const; // Not virtual anymore
+            std::string getType() const;
 };
 
 #endif

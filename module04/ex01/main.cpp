@@ -7,6 +7,7 @@
 
 int main()
 {
+
     // --- REQUIRED ARRAY TEST
     std::cout << "--- Creating an array of animals ---" << std::endl;
     const int numAnimals = 4;
@@ -39,7 +40,7 @@ int main()
 
     tmp.getBrain()->ideas[0] = "I love cats now"; // Muutetaan vain kopiota
     std::cout << "--- After modification ---" << std::endl;
-    std::cout << "Original idea (should be bones): " << basic.getBrain()->ideas[0] << std::endl;
+    std::cout << "Original idea (should be empty thought 0): " << basic.getBrain()->ideas[0] << std::endl;
     std::cout << "Copy's idea (should be cats): " << tmp.getBrain()->ideas[0] << std::endl;
 
     std::cout << "\n--- Testing Assignment Operator ---" << std::endl;
@@ -47,7 +48,10 @@ int main()
     Dog b;
     a = b;
 
+
     std::cout << "\n--- End of tests ---" << std::endl;
+
+
     return 0;    
 
 }
