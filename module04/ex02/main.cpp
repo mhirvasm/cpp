@@ -54,8 +54,8 @@ int main()
     /*
     std::cout << "\n--- Trying to instantiate Animal ---" << std::endl;
     const Animal* meta = new Animal(); // Compiler error inc
-    meta->makeSound();
     */
+    
 
 
     std::cout << "\n--- End of tests ---" << std::endl;
