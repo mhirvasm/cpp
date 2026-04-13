@@ -6,10 +6,20 @@
 Form::Form() :
 _name("Unnamed"),
 _signed(false),
-_signGrade(_generateRandomGrade()),
-_execGrade(_generateRandomGrade())
+_signGrade(generateRandomGrade()),
+_execGrade(generateRandomGrade())
 {
     std::cout << "Randomized Form " << _name << " created (Sign: " 
+              << _signGrade << ", Exec: " << _execGrade << ")\n";
+}
+
+Form::Form(std::string name) : 
+_name(name),
+_signed(false),
+_signGrade(generateRandomGrade()),
+_execGrade(generateRandomGrade())
+{
+    std::cout << "Named form " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
 }
 
@@ -69,16 +79,15 @@ void Form::beSigned(const Bureaucrat& object)
 {
     if (object.getGrade() <= this->getSignGrade())
     {
-        std::cout << "Bureaucrat " << object.getName() << " signed " << _name << std::endl;
+        this->_signed = true;
     }
     else 
     {
-        std::cout << "Bureaucrat " << object.getName() << " couldnt sign the " << _name << " because grade too low." << std::endl;
         throw Form::GradeTooLowException();
     }
 }
 
-int Form::_generateRandomGrade() const 
+int generateRandomGrade()
 {
     //generating random number between 1-150
     return (std::rand() % 150) + 1;

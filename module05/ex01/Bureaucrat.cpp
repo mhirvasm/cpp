@@ -3,14 +3,19 @@
 
 Bureaucrat::Bureaucrat() :
 _name("Unnamed"),
-_grade(150)
+_grade(generateRandomGrade())
 {
-    std::cout << "Default constructor called, grade set 150 as default\n";
+    std::cout << "Default constructor called for bureaucrat\n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) :
 _name(name)
 {
+    if (grade == 0)
+    {
+        _grade = generateRandomGrade();
+        return;
+    }
     if (grade < 1)
     {
         throw Bureaucrat::GradeTooHighException();
@@ -93,7 +98,18 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return ("Grade is too Low!");
 }
 
-void Bureaucrat::signForm()
+void Bureaucrat::signForm(Form& form)
 {
-    
+    try
+    {
+        form.beSigned(*this);
+        std::cout << "Bureaucrat " << this->getName() << " signed " << form.getName() << std::endl;
+    }
+
+    catch(std::exception & e)
+    {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+        //std::cout << "Bureaucrat " << object.getName() << " couldnt sign the " << _name << " because grade too low." << std::endl;
+    }
+
 }

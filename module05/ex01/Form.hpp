@@ -13,18 +13,18 @@ class Form
             bool              _signed;
             const int         _signGrade;
             const int         _execGrade;
-            int _generateRandomGrade() const; // to be used in intialization with default constructor
 
     public:
             Form();
+            Form(std::string name);
             Form(const Form& other);
             Form& operator=(const Form& other);
             ~Form();
 
             const std::string   getName() const;
             bool                getSigned() const;
-            int           getSignGrade() const;
-            int           getExecGrade() const;
+            int                 getSignGrade() const;
+            int                 getExecGrade() const;
 
             void beSigned(const Bureaucrat& object);
 
@@ -57,5 +57,6 @@ class Form
 
 //overload << insertion operator here!
 std::ostream& operator<<(const std::ostream& out, Form const& rhs);
+int           generateRandomGrade(); // to be used in intialization with default constructor
 
 #endif

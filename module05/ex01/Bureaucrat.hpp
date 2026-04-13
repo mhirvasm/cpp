@@ -5,6 +5,8 @@
 #include <exception>
 #include "Form.hpp"
 
+class Form;
+
 class Bureaucrat
 {
     private:
@@ -28,7 +30,7 @@ class Bureaucrat
         int getGrade() const;
         void increment();
         void decrement();
-        void signForm();
+        void signForm(Form& form);
 
         class GradeTooHighException : public std::exception
         {
