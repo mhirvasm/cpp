@@ -67,7 +67,6 @@ int   Form::getExecGrade() const
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-    //<bureaucrat> couldn't sign <form> because <reason>.
     return ("Grade too low.\n");
 }
 
@@ -92,12 +91,4 @@ int generateRandomGrade()
 {
     //generating random number between 1-150
     return (std::rand() % 150) + 1;
-}
-
-std::ostream& operator<<(std::ostream& out, Form const& rhs)
-{
-    
-    out << rhs.getName() << " signGrade: " << rhs.getSignGrade() << " execGrade: " << rhs.getExecGrade() <<
-    " signed state: " << rhs.getSigned() << "." << std::endl;
-    return (out);
 }

@@ -23,18 +23,12 @@ int main()
 
     Bureaucrat bure1("Bob from " AT, 0);
 
-    std::cout <<  bure1 << std::endl;
+    std::cout << "Bure1 signGrade: " << bure1.getGrade() << std::endl;
 
     bure1.signForm(form1);
     bure1.signForm(form2);
     bure1.signForm(form3);
     bure1.signForm(form4);
-
-    std::cout << form1 << std::endl;
-    std::cout << form2 << std::endl;
-    std::cout << form3 << std::endl;
-    std::cout << form4 << std::endl;
-
 
     return 0;
 }
