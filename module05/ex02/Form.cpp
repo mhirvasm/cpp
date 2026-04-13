@@ -67,12 +67,19 @@ int   Form::getExecGrade() const
 
 const char* Form::GradeTooLowException::what() const throw()
 {
+    
     return ("Grade too low.\n");
 }
 
 const char* Form::GradeTooHighException::what() const throw()
 {
     return ("Grade too high\n");
+}
+
+int generateRandomGrade()
+{
+    //generating random number between 1-150
+    return (std::rand() % 150) + 1;
 }
 
 void Form::beSigned(const Bureaucrat& object)
@@ -87,8 +94,10 @@ void Form::beSigned(const Bureaucrat& object)
     }
 }
 
-int generateRandomGrade()
+std::ostream& operator<<(std::ostream& out, Form const& rhs)
 {
-    //generating random number between 1-150
-    return (std::rand() % 150) + 1;
+    
+    out << rhs.getName() << " signGrade: " << rhs.getSignGrade() << " execGrade: " << rhs.getExecGrade() <<
+    " signed state: " << rhs.getSigned() << "." << std::endl;
+    return (out);
 }

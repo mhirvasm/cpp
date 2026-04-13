@@ -21,14 +21,20 @@ int main()
     Form form4("Form4");
     std::cout << std::endl;
 
-    Bureaucrat bure1("Bob from " AT, 0);
+    try
+    {
+        Bureaucrat bure1("Bob from " AT, 0);
+        std::cout << "Bure1 signGrade: " << bure1.getGrade() << std::endl;
+        bure1.signForm(form1);
+        bure1.signForm(form2);
+        bure1.signForm(form3);
+        bure1.signForm(form4);
+    }
+    catch (std::exception & e)
+    {
+        std::cerr << "Unexpected error: " << e.what() << std::endl;
+    }
 
-    std::cout << "Bure1 signGrade: " << bure1.getGrade() << std::endl;
-
-    bure1.signForm(form1);
-    bure1.signForm(form2);
-    bure1.signForm(form3);
-    bure1.signForm(form4);
-
+    
     return 0;
 }

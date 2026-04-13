@@ -56,7 +56,7 @@ class Form
 };
 
 //overload << insertion operator here!
-std::ostream& operator<<(const std::ostream& out, Form const& rhs);
+std::ostream& operator<<(std::ostream& out, Form const& rhs);
 int           generateRandomGrade(); // to be used in intialization with default constructor
 
 #endif
