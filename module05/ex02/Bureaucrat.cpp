@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() :
 _name("Unnamed"),
@@ -98,7 +98,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return ("Grade is too Low!");
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
     try
     {
@@ -110,7 +110,7 @@ void Bureaucrat::signForm(Form& form)
     {
         std::cout << this->getName() << " couldn't sign " 
               << form.getName() << " because " 
-              << e.what() << "." << std::endl;
+              << e.what() << std::endl;
     }
 
 }

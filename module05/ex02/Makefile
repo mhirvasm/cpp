@@ -6,7 +6,7 @@ CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp Bureaucrat.cpp Form.cpp
+SRC       = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ       = $(SRC:.cpp=.o)
 
 # Default

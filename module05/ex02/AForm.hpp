@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     private:
             const std::string _name;
@@ -15,18 +15,19 @@ class Form
             const int         _execGrade;
 
     public:
-            Form();
-            Form(std::string name);
-            Form(const Form& other);
-            Form& operator=(const Form& other);
-            ~Form();
+            AForm();
+            AForm(std::string name);
+            AForm(const AForm& other);
+            AForm& operator=(const AForm& other);
+            virtual ~AForm(); //make it virtual
 
             const std::string   getName() const;
             bool                getSigned() const;
             int                 getSignGrade() const;
             int                 getExecGrade() const;
 
-            void beSigned(const Bureaucrat& object);
+            void                beSigned(const Bureaucrat& object);
+            virtual void        execute(Bureaucrat const & executor) const = 0; //make it virtual
 
             class GradeTooHighException : public std::exception
             {
@@ -40,23 +41,11 @@ class Form
                     virtual const char* what() const throw();
             };
 
-            //getters for all attributes
-            //add beSigned() member function
-            //add signForm() member function IN BUREAUCRAT CLASS 
-            /* This function must
-                call Form::beSigned() to attempt to sign the form. If the form is signed successfully, it
-                will print something like:
-                <bureaucrat> signed <form>
-                
-                Otherwise, it will print something like:
-                <bureaucrat> couldn’t sign <form> because <reason>
-                
-                */
 
 };
 
 //overload << insertion operator here!
-std::ostream& operator<<(std::ostream& out, Form const& rhs);
+std::ostream& operator<<(std::ostream& out, AForm const& rhs);
 int           generateRandomGrade(); // to be used in intialization with default constructor
 
 #endif

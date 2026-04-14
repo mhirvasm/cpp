@@ -1,19 +1,19 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <cstdlib> // rand() ja srand()
 #include <ctime>   // time()
 
 // Default constructor
-Form::Form() :
+AForm::AForm() :
 _name("Unnamed"),
 _signed(false),
 _signGrade(generateRandomGrade()),
 _execGrade(generateRandomGrade())
 {
-    std::cout << "Randomized Form " << _name << " created (Sign: " 
+    std::cout << "Randomized AForm " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
 }
 
-Form::Form(std::string name) : 
+AForm::AForm(std::string name) : 
 _name(name),
 _signed(false),
 _signGrade(generateRandomGrade()),
@@ -24,54 +24,54 @@ _execGrade(generateRandomGrade())
 }
 
 // Copy constructor
-Form::Form(const Form& other) :
+AForm::AForm(const AForm& other) :
 _name(other._name),
 _signed(other._signed),
 _signGrade(other._signGrade),
 _execGrade(other._execGrade)
 {
-    std::cout << "Form copy constructor called\n";
+    std::cout << "AForm copy constructor called\n";
 }
 
 // Copy assignment operator
-Form& Form::operator=(const Form& other)
+AForm& AForm::operator=(const AForm& other)
 {
-    std::cout << "Form copy assignment operator called\n";
+    std::cout << "AForm copy assignment operator called\n";
     if (this != &other)
         _signed = other._signed;
     return (*this);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-    std::cout << "Form destructor called\n";
+    std::cout << "AForm destructor called\n";
 }
 
-const std::string Form::getName() const
+const std::string AForm::getName() const
 {
     return (_name);
 }
-bool        Form::getSigned() const
+bool        AForm::getSigned() const
 {
     return (_signed);
 }
-int   Form::getSignGrade() const
+int   AForm::getSignGrade() const
 {
     return (_signGrade);
 }
 
-int   Form::getExecGrade() const
+int   AForm::getExecGrade() const
 {
     return (_execGrade);
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
     
     return ("Grade too low.\n");
 }
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
     return ("Grade too high\n");
 }
@@ -82,7 +82,7 @@ int generateRandomGrade()
     return (std::rand() % 150) + 1;
 }
 
-void Form::beSigned(const Bureaucrat& object)
+void AForm::beSigned(const Bureaucrat& object)
 {
     if (object.getGrade() <= this->getSignGrade())
     {
@@ -90,11 +90,11 @@ void Form::beSigned(const Bureaucrat& object)
     }
     else 
     {
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
 }
 
-std::ostream& operator<<(std::ostream& out, Form const& rhs)
+std::ostream& operator<<(std::ostream& out, AForm const& rhs)
 {
     
     out << rhs.getName() << " signGrade: " << rhs.getSignGrade() << " execGrade: " << rhs.getExecGrade() <<
