@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     std::size_t position;
 
     
-    while(getline(MyFile, currentStr))
+    while(std::getline(MyFile, currentStr))
     {
         //std::cout << currentStr << std::endl; //print test
         position = currentStr.find(string1);
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
             currentStr.erase(position, string1.length()); //erase the 
             currentStr.insert(position, string2);
             position += string2.length();
-            position = currentStr.find(string1);
+            position = currentStr.find(string1, position);
         }
         MyFile2 << currentStr << "\n";
     }

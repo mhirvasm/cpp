@@ -10,6 +10,15 @@ inside it.*/
 class ShrubberyCreationForm : public AForm
 {
 
+    //big 4
+    ShrubberyCreationForm(std::string target);
+    ShrubberyCreationForm(const ShrubberyCreationForm& other);
+    ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+    ~ShrubberyCreationForm();
+
+    void        execute(Bureaucrat const & executor) const;
+
+
 };
 
 
