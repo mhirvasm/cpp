@@ -74,7 +74,7 @@ int main() {
 
         // go through structs, and see who woke up poll():n
         for (int i = 0; i < MAX_CLIENTS; i++) {
-            // if in this slot it wasnt POLLIN ja skip
+            // if in this slot it wasnt POLLIN just skip  
             if (!(fds[i].revents & POLLIN)) 
                 continue;
 
@@ -123,8 +123,11 @@ int main() {
             else {
                 char buffer[1024] = {0}; //intializing buffer with zeros
                 
+                //UPDATE THIS. We need a Client object, and place it in a map
+                // std::map<int, Client> and append and store the string inside a client, and search for \r\n\r\n as a mark for end of the body
+
                 // read data to the buffer 
-                int valread = read(fds[i].fd, buffer, sizeof(buffer));
+                int valread = read(fds[i].fd, buffer, sizeof(buffer)); 
                 if (valread <= 0)
                 {
                     close(fds[i].fd);
@@ -135,7 +138,7 @@ int main() {
                 // Print the buffuer to the output stream
                 std::cout << buffer << std::endl;
 
-                // Kovakoodattu HTTP-vastaus
+                // Hardcoded mock response
                 std::string mock_response = 
                     "HTTP/1.1 200 OK\r\n"
                     "Content-Type: text/plain\r\n"
