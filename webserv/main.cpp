@@ -74,11 +74,11 @@ int main() {
 
         // go through structs, and see who woke up poll():n
         for (int i = 0; i < MAX_CLIENTS; i++) {
-            // if in this slot it wasnt POLLIN just skip  
+            // did this specific socket actually ring? if not, continue
             if (!(fds[i].revents & POLLIN)) 
                 continue;
 
-            // Master socket wokeup, some1 wants to connect
+            // Master socket wokeup, some1 wants to connect, what kind of socket is this?
             if (fds[i].fd == server_fd) 
             {
                 // Create empty struct to store client information
