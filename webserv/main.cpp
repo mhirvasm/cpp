@@ -36,11 +36,15 @@ int main() {
     address.sin_addr.s_addr = INADDR_ANY; // Listen all interfaces
     address.sin_port = htons(PORT);       // hton transforms port to understand the byte order
 
+    // once executed succesfully, os registers that any it traffic that arrives at port 8080
+    // must be routed directly to this specific c++ program
     if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0)
     {
         std::cerr << "Bind failed. Is the port already in use?" << std::endl;
         return 1;
     }
+    //with listen we transform default active socket into passice socket (server mode)
+    // also initializes queue for in case of client rush. Somaxconn macro gives us largest queue
     if (listen(server_fd, SOMAXCONN) < 0)
     {
         std::cerr << "Listen failed" << std::endl;
