@@ -8,14 +8,14 @@ successfully 50% of the time. Otherwise, it informs that the robotomy failed.*/
 
 class RobotomyRequestForm : public AForm
 {
+    public:
+        //big 4
+        RobotomyRequestForm(std::string target);
+        RobotomyRequestForm(const RobotomyRequestForm& other);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+        ~RobotomyRequestForm();
 
-    //big 4
-    RobotomyRequestForm(std::string target);
-    RobotomyRequestForm(const RobotomyRequestForm& other);
-    RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
-    ~RobotomyRequestForm();
-
-    void        execute(Bureaucrat const & executor) const;
+        void        execute(Bureaucrat const & executor) const;
 };
 
 

@@ -12,12 +12,12 @@ _execGrade(generateRandomGrade())
     std::cout << "Randomized AForm " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
 }
-
-AForm::AForm(std::string name) : 
+//modified constructor for ex02
+AForm::AForm(std::string name, int signGrade, int execGrade) : 
 _name(name),
 _signed(false),
-_signGrade(generateRandomGrade()),
-_execGrade(generateRandomGrade())
+_signGrade(signGrade),
+_execGrade(_execGrade)
 {
     std::cout << "Named form " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
