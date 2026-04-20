@@ -6,11 +6,24 @@
 #include <fcntl.h>      // For fcntl() and O_NONBLOCK
 #include <unistd.h>     // For close(), read(), write()
 #include <cstring>      // For memset()
+#include <fstream>      //For ile manipulation
 
 #define PORT 8080
 #define MAX_CLIENTS 100
 
 int main() {
+
+    //Lets start parsing the configFile
+    //std::string readConf;
+
+    //std::ifstream MyReadFile("configFile.conf"); //Open file
+    //while (std::getline(MyReadFile, readConf)) //Write everything to our string object
+    //    std::cout << readConf;
+    //MyReadFile.close(); //Close the file
+
+    
+
+
     // create master socket
     // AF_INET = IPv4, SOCK_STREAM = TCP
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -33,7 +46,7 @@ int main() {
     struct sockaddr_in address;
     std::memset(&address, 0, sizeof(address));
     address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY; // Listen all interfaces
+    address.sin_addr.s_addr = INADDR_ANY; // Listen all interfaces CHECK THIS
     address.sin_port = htons(PORT);       // hton transforms port to understand the byte order
 
     // once executed succesfully, os registers that any it traffic that arrives at port 8080
@@ -92,7 +105,7 @@ int main() {
                 // type is socklen_t, coz accept() demands this type
                 socklen_t client_len = sizeof(client_address);
 
-                // Call accept
+                // Call accept DOUBLE  CHECK ACCEPT FUNCTION
                 int new_client_fd = accept(server_fd, (struct sockaddr*)&client_address, &client_len);
                 if (new_client_fd == -1)
                 {
@@ -125,13 +138,14 @@ int main() {
             } 
             // Already existing client woke up and sent us data
             else {
-                char buffer[1024] = {0}; //intializing buffer with zeros
+                char buffer[1048] = {0}; //intializing buffer with zeros
                 
                 //UPDATE THIS. We need a Client object, and place it in a map
                 // std::map<int, Client> and append and store the string inside a client, and search for \r\n\r\n as a mark for end of the body
 
                 // read data to the buffer 
                 int valread = read(fds[i].fd, buffer, sizeof(buffer)); 
+
                 if (valread <= 0)
                 {
                     close(fds[i].fd);
@@ -149,6 +163,7 @@ int main() {
                     "Content-Length: 13\r\n"
                     "\r\n"
                     "Hello, World!";
+                
                 
                 //lets use write or send to send the mock response to the client
                 int bytesSent = write(fds[i].fd, mock_response.c_str(), mock_response.length());
