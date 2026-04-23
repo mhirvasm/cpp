@@ -1,7 +1,7 @@
 #ifndef HTTPRESPONSE_HPP
 # define HTTPRESPONSE_HPP
 
-
+// Hold the status code and the final formatted body data
 class HttpResponse
 {
     //Once the server processes request, it send back and HTTP response with following components

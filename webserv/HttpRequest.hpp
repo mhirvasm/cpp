@@ -4,7 +4,7 @@
 #include <iostream>
 
 //HttpRequest consist of request line, headers (body and query optional)
-
+// Class holds the parsed URI, Method and headers
 class HttpRequest
 {
     // A request line consists of method, request target and HTTP version (ALL MANDATORY)
