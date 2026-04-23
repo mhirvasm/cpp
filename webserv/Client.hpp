@@ -4,6 +4,8 @@
 
 class Client 
 {
+    // What do we need to store in client object? 
+    
 
 };
 
