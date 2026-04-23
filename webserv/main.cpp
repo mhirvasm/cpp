@@ -138,13 +138,14 @@ int main() {
             } 
             // Already existing client woke up and sent us data
             else {
-                char buffer[1048] = {0}; //intializing buffer with zeros
+                // 8Kb is standardized  size for single read 
+                char shovelBuffer[8192] = {0}; //intializing buffer with zeros
                 
                 //UPDATE THIS. We need a Client object, and place it in a map
                 // std::map<int, Client> and append and store the string inside a client, and search for \r\n\r\n as a mark for end of the body
 
                 // read data to the buffer 
-                int valread = read(fds[i].fd, buffer, sizeof(buffer)); 
+                int valread = read(fds[i].fd, shovelBuffer, sizeof(shovelBuffer)); 
 
                 if (valread <= 0)
                 {
@@ -154,7 +155,7 @@ int main() {
                     continue;
                 }
                 // Print the buffuer to the output stream
-                std::cout << buffer << std::endl;
+                std::cout << shovelBuffer << std::endl;
 
                 // Hardcoded mock response
                 std::string mock_response = 
