@@ -7,7 +7,7 @@ _grade(150)
     std::cout << "Default constructor called, grade set 150 as default\n";
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) :
+Bureaucrat::Bureaucrat(const std::string name, int grade) :
 _name(name)
 {
     if (grade < 1)
