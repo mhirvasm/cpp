@@ -2,7 +2,7 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include <exception>
 
 class Bureaucrat;
 
@@ -19,7 +19,7 @@ class AForm
             AForm(std::string name, int signGrade, int execGrade);
             AForm(const AForm& other);
             AForm& operator=(const AForm& other);
-            virtual ~AForm(); //make it virtual
+            virtual ~AForm();
 
             const std::string   getName() const;
             bool                getSigned() const;
@@ -27,7 +27,8 @@ class AForm
             int                 getExecGrade() const;
 
             void                beSigned(const Bureaucrat& object);
-            virtual void        execute(Bureaucrat const & executor) const = 0; //make it virtual
+            void                checkExecutionRequirements(Bureaucrat const & executor) const;
+            virtual void        execute(Bureaucrat const & executor) const = 0;
 
             class GradeTooHighException : public std::exception
             {
@@ -41,11 +42,15 @@ class AForm
                     virtual const char* what() const throw();
             };
 
+            class NotSignedException : public std::exception
+            {
+                public:
+                    virtual const char* what() const throw();
+            };
 
 };
 
 //overload << insertion operator here!
 std::ostream& operator<<(std::ostream& out, AForm const& rhs);
-int           generateRandomGrade(); // to be used in intialization with default constructor
 
 #endif

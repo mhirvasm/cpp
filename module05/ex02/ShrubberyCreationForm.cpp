@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 /*• ShrubberyCreationForm: Required grades: sign 145, exec 137
 Creates a file <target>_shrubbery in the working directory and writes ASCII trees
@@ -34,16 +35,20 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
     std::cout << "Shrubbery destructor called." << std::endl;
 }
 
-void        AForm::execute(Bureaucrat const & executor) const
+void        ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    try
-    {
-        //check it is signed
-        //check bureaucrat exec grade is enough, otherwise throw exception
-        //execute if all is good 
-    }
-    catch(std::exception & e)
-    {
-        
-    }
+    // Ensure the form is signed and the bureaucrat can execute it.
+    this->checkExecutionRequirements(executor);
+
+    std::ofstream out((_target + "_shrubbery").c_str());
+    // Create a simple ASCII tree in the output file.
+    out << "      /\\\n";
+    out << "     /  \\\n";
+    out << "    /\\  /\\\n";
+    out << "   /  \\/  \\\n";
+    out << "  /  /\\  /\\\n";
+    out << " /__/  \\/  \\\n";
+    out << "      ||\n";
+    out << std::endl;
+    std::cout << "Shrubbery created for " << _target << std::endl;
 }

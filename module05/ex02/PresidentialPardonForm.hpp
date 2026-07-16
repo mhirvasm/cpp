@@ -7,6 +7,8 @@ Informs that <target> has been pardoned by Zaphod Beeblebrox*/
 
 class PresidentialPardonForm : public AForm
 {
+    private:
+            std::string _target;
     public:
         //big 4
         PresidentialPardonForm(std::string target);

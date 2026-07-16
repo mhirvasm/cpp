@@ -8,6 +8,8 @@ successfully 50% of the time. Otherwise, it informs that the robotomy failed.*/
 
 class RobotomyRequestForm : public AForm
 {
+    private:
+            std::string _target;
     public:
         //big 4
         RobotomyRequestForm(std::string target);

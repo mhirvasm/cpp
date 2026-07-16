@@ -3,7 +3,7 @@
 
 Bureaucrat::Bureaucrat() :
 _name("Unnamed"),
-_grade(generateRandomGrade())
+_grade(150)
 {
     std::cout << "Default constructor called for bureaucrat\n";
 }
@@ -11,11 +11,7 @@ _grade(generateRandomGrade())
 Bureaucrat::Bureaucrat(std::string name, int grade) :
 _name(name)
 {
-    if (grade == 0)
-    {
-        _grade = generateRandomGrade();
-        return;
-    }
+    
     if (grade < 1)
     {
         throw Bureaucrat::GradeTooHighException();
@@ -117,5 +113,15 @@ void Bureaucrat::signForm(AForm& form)
 
 void Bureaucrat::executeForm(AForm const & form) const
 {
-    
+    try
+    {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    }
+    catch(std::exception & e)
+    {
+        std::cout << this->getName() << " couldn't execute "
+              << form.getName() << " because "
+              << e.what() << std::endl;
+    }
 }

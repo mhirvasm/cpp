@@ -1,13 +1,12 @@
 #include "AForm.hpp"
-#include <cstdlib> // rand() ja srand()
-#include <ctime>   // time()
+#include "Bureaucrat.hpp"
 
 // Default constructor
 AForm::AForm() :
 _name("Unnamed"),
 _signed(false),
-_signGrade(generateRandomGrade()),
-_execGrade(generateRandomGrade())
+_signGrade(1),
+_execGrade(1)
 {
     std::cout << "Randomized AForm " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
@@ -17,10 +16,19 @@ AForm::AForm(std::string name, int signGrade, int execGrade) :
 _name(name),
 _signed(false),
 _signGrade(signGrade),
-_execGrade(_execGrade)
+_execGrade(execGrade)
 {
+    if (signGrade < 1)
+        throw GradeTooHighException();
+    if (execGrade < 1)
+        throw GradeTooHighException();
+    if (signGrade > 150)
+        throw GradeTooLowException();
+    if (execGrade > 150)
+        throw GradeTooLowException();
     std::cout << "Named form " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
+
 }
 
 // Copy constructor
@@ -68,18 +76,17 @@ int   AForm::getExecGrade() const
 const char* AForm::GradeTooLowException::what() const throw()
 {
     
-    return ("Grade too low.\n");
+    return ("Grade too low.");
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return ("Grade too high\n");
+    return ("Grade too high");
 }
 
-int generateRandomGrade()
+const char* AForm::NotSignedException::what() const throw()
 {
-    //generating random number between 1-150
-    return (std::rand() % 150) + 1;
+    return ("Form is not signed.");
 }
 
 void AForm::beSigned(const Bureaucrat& object)
@@ -92,6 +99,16 @@ void AForm::beSigned(const Bureaucrat& object)
     {
         throw AForm::GradeTooLowException();
     }
+}
+
+void AForm::checkExecutionRequirements(Bureaucrat const & executor) const
+{
+    // Ensure the form has been signed before it can be executed.
+    if (this->_signed == false)
+        throw AForm::NotSignedException();
+    // Ensure the bureaucrat's grade is high enough to execute the form.
+    if (executor.getGrade() > this->_execGrade)
+        throw AForm::GradeTooLowException();
 }
 
 std::ostream& operator<<(std::ostream& out, AForm const& rhs)
