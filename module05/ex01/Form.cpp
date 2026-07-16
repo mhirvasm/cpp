@@ -1,24 +1,31 @@
 #include "Form.hpp"
-#include <cstdlib> // rand() ja srand()
-#include <ctime>   // time()
+#include "Bureaucrat.hpp"
 
 // Default constructor
 Form::Form() :
 _name("Unnamed"),
 _signed(false),
-_signGrade(generateRandomGrade()),
-_execGrade(generateRandomGrade())
+_signGrade(1),
+_execGrade(1)
 {
-    std::cout << "Randomized Form " << _name << " created (Sign: " 
+    std::cout << "Unnamed form " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
 }
 
-Form::Form(std::string name) : 
+Form::Form(std::string name, int signGrade, int execGrade) : 
 _name(name),
 _signed(false),
-_signGrade(generateRandomGrade()),
-_execGrade(generateRandomGrade())
+_signGrade(signGrade),
+_execGrade(execGrade)
 {
+    if (signGrade < 1)
+        throw GradeTooHighException();
+    if (execGrade < 1)
+        throw GradeTooHighException();
+    if (signGrade > 150)
+        throw GradeTooLowException();
+    if (execGrade > 150)
+        throw GradeTooLowException();
     std::cout << "Named form " << _name << " created (Sign: " 
               << _signGrade << ", Exec: " << _execGrade << ")\n";
 }
@@ -68,18 +75,12 @@ int   Form::getExecGrade() const
 const char* Form::GradeTooLowException::what() const throw()
 {
     
-    return ("Grade too low.\n");
+    return ("Grade too low.");
 }
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return ("Grade too high\n");
-}
-
-int generateRandomGrade()
-{
-    //generating random number between 1-150
-    return (std::rand() % 150) + 1;
+    return ("Grade too high");
 }
 
 void Form::beSigned(const Bureaucrat& object)

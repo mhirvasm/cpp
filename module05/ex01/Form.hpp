@@ -2,7 +2,7 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include <exception>
 
 class Bureaucrat;
 
@@ -16,7 +16,7 @@ class Form
 
     public:
             Form();
-            Form(std::string name);
+            Form(std::string name, int signGrade, int execGrade);
             Form(const Form& other);
             Form& operator=(const Form& other);
             ~Form();
@@ -57,6 +57,5 @@ class Form
 
 //overload << insertion operator here!
 std::ostream& operator<<(std::ostream& out, Form const& rhs);
-int           generateRandomGrade(); // to be used in intialization with default constructor
 
 #endif

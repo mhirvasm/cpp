@@ -1,21 +1,18 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+
 Bureaucrat::Bureaucrat() :
 _name("Unnamed"),
-_grade(generateRandomGrade())
+_grade(150)
 {
     std::cout << "Default constructor called for bureaucrat\n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) :
-_name(name)
+_name(name),
+_grade(grade)
 {
-    if (grade == 0)
-    {
-        _grade = generateRandomGrade();
-        return;
-    }
     if (grade < 1)
     {
         throw Bureaucrat::GradeTooHighException();
@@ -24,7 +21,6 @@ _name(name)
     {
         throw Bureaucrat::GradeTooLowException();
     }
-    _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) :
