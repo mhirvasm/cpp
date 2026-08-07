@@ -40,18 +40,6 @@ class Form
                     virtual const char* what() const throw();
             };
 
-            //getters for all attributes
-            //add beSigned() member function
-            //add signForm() member function IN BUREAUCRAT CLASS 
-            /* This function must
-                call Form::beSigned() to attempt to sign the form. If the form is signed successfully, it
-                will print something like:
-                <bureaucrat> signed <form>
-                
-                Otherwise, it will print something like:
-                <bureaucrat> couldn’t sign <form> because <reason>
-                
-                */
 
 };
 

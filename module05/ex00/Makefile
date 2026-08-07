@@ -1,5 +1,5 @@
 # Program name
-NAME      = bureucrat
+NAME      = bureaucrat
 # Compiler and flags
 
 CXX       = c++
