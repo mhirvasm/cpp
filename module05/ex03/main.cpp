@@ -105,17 +105,19 @@
 
     {
 		std::cout << "----------TEST 5----------\n\n";
+        // test copy constructor
 		Intern bob(intern);
-		AForm *form = bob.makeForm("shrubbery creation", "Back yard");
+		AForm *form = bob.makeForm("shrubbery creation", "Server room");
 		delete form;
 
+        //test assignment operator
 		Intern steve = bob;
-		form = steve.makeForm("robotomy request", "Bjorn");
+		form = steve.makeForm("robotomy request", "Moulinette");
 		delete form;
         
 		Intern mike;
 		mike = steve;
-		form = mike.makeForm("presidential pardon", "Hans");
+		form = mike.makeForm("presidential pardon", "Unfreed Malloc");
 		delete form;
 	}
     

@@ -26,10 +26,10 @@ private:
 		};
 
 public:
-	Intern(void) = default;
+	Intern() = default;
 	Intern(const Intern &other) = default;
 	Intern &operator=(const Intern &other) = default;
-	~Intern(void) = default;
+	~Intern() = default;
 
 	AForm *makeForm(const std::string &name, const std::string &target) const;
 };
