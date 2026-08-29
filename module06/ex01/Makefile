@@ -1,12 +1,12 @@
 # Program name
-NAME      = scalarconverter
+NAME      = serializer
 # Compiler and flags
 
 CXX       = c++
 CXXFLAGS  = -Wall -Wextra -Werror -std=c++20
 
 # Files
-SRC       = main.cpp ScalarConverter.cpp
+SRC       = main.cpp Serializer.cpp
 OBJ       = $(SRC:.cpp=.o)
 
 # Default
