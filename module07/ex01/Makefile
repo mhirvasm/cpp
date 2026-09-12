@@ -1,5 +1,5 @@
 # Program name
-NAME      = identify
+NAME      = iter
 # Compiler and flags
 
 CXX       = c++
