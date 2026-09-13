@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "iter.hpp"
+#include "Iter.hpp"
 
 // Instantiated function template as required by the subject
 template <typename T>
@@ -29,7 +29,6 @@ int main(void) {
     const std::string strArray[] = {"Hello", "Hive", "Helsinki", "42"};
     std::size_t strLen = sizeof(strArray) / sizeof(strArray[0]);
     
-    // This works because of our overloaded const template.
     // If we tried to pass incrementElement here, it would fail to compile (which is correct).
     ::iter(strArray, strLen, printElement<std::string>);
     std::cout << "\n";
