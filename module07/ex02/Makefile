@@ -1,5 +1,5 @@
 # Program name
-NAME      = identify
+NAME      = array
 # Compiler and flags
 
 CXX       = c++
