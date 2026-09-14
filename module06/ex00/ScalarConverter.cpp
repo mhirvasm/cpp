@@ -3,12 +3,14 @@
 #include <limits>
 #include <cmath>
 #include <cctype>
+#include <string>
 
-// Implement the conversion logic here
+// implement the conversion logic here
 void ScalarConverter::convert(const std::string& literal) {
     
     double value = 0.0;
     std::size_t pos = 0;
+    bool valid = true;
 
     try {
         // handle single char literal first
@@ -25,30 +27,30 @@ void ScalarConverter::convert(const std::string& literal) {
                     // this is a valid float literal 
                 } else {
                     // garbage collector
-                    throw std::invalid_argument("Invalid trailing characters");
+                    throw std::invalid_argument("invalid trailing characters");
                 }
             }
         }
     } catch (...) {
-        // This will catch both std::stod parsing failures and our custom garbage throw
-        std::cout << "Invalid input\n";
-        return;
+        // flag parsing failures instead of returning early to maintain output format
+        valid = false;
     }
 
     // cast to char and check limits
     std::cout << "char: ";
-    if (std::isnan(value) || std::isinf(value) || value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max()) 
+    if (!valid || std::isnan(value) || std::isinf(value) || value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max()) 
     {
         std::cout << "impossible\n";
-    } else if (!std::isprint(static_cast<char>(value))) {
+    } else if (!std::isprint(static_cast<unsigned char>(value))) {
+        // safely cast to unsigned char for isprint to prevent undefined behavior
         std::cout << "Non displayable\n";
     } else {
         std::cout << "'" << static_cast<char>(value) << "'\n";
     }
 
-    // Cast to int and check limits
+    // cast to int and check limits
     std::cout << "int: ";
-    if (std::isnan(value) || std::isinf(value) || value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max()) 
+    if (!valid || std::isnan(value) || std::isinf(value) || value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max()) 
     {
         std::cout << "impossible\n";
     } else {
@@ -57,20 +59,33 @@ void ScalarConverter::convert(const std::string& literal) {
 
     bool isWhole = (std::fmod(value, 1.0) == 0.0) && !std::isnan(value) && !std::isinf(value);
 
-    // Cast and print float
-    std::cout << "float: " << static_cast<float>(value);
-    if (isWhole) 
-    {
-        std::cout << ".0"; 
+    // cast and print float
+    std::cout << "float: ";
+    if (!valid) {
+        std::cout << "impossible\n";
+    } else if (!std::isnan(value) && !std::isinf(value) && (value > std::numeric_limits<float>::max() || value < -std::numeric_limits<float>::max())) {
+        // limit check for float. min() is the smallest positive value, so we use -max() for the lowest bound.
+        std::cout << "impossible\n";
+    } else {
+        std::cout << static_cast<float>(value);
+        if (isWhole) 
+        {
+            std::cout << ".0"; 
+        }
+        std::cout << "f\n";
     }
-    std::cout << "f\n";
 
     // print double
-    std::cout << "double: " << value;
-    if (isWhole) 
-    {
-        // manually append .0 only if the number is whole and valid
-        std::cout << ".0"; 
+    std::cout << "double: ";
+    if (!valid) {
+        std::cout << "impossible\n";
+    } else {
+        std::cout << value;
+        if (isWhole) 
+        {
+            // manually append .0 only if the number is whole and valid
+            std::cout << ".0"; 
+        }
+        std::cout << "\n";
     }
-std::cout << "\n";
 }

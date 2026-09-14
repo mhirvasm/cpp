@@ -10,6 +10,7 @@ private:
     Serializer() = delete;
     Serializer(const Serializer&) = delete;
     Serializer& operator=(const Serializer&) = delete;
+    ~Serializer();
 
 public:
 

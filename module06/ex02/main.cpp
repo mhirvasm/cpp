@@ -54,6 +54,7 @@ void identify(Base& p) {
 
 int main() {
    {
+	std::srand(std::time(NULL));
 		// Test random objects with pointers.
 		// Verifies dynamic_cast returns nullptr on failure.
 		std::cout << "TEST 1 with Base pointers\n\n";
