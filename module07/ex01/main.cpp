@@ -19,9 +19,9 @@ int main(void) {
     int intArray[] = {1, 2, 3, 4, 5};
     std::size_t intLen = sizeof(intArray) / sizeof(intArray[0]);
     
-    // Modify array
+    // modify array
     ::iter(intArray, intLen, incrementElement<int>);
-    // Print array
+    // print array
     ::iter(intArray, intLen, printElement<int>);
     std::cout << "\n\n";
 
@@ -29,7 +29,7 @@ int main(void) {
     const std::string strArray[] = {"Hello", "Hive", "Helsinki", "42"};
     std::size_t strLen = sizeof(strArray) / sizeof(strArray[0]);
     
-    // If we tried to pass incrementElement here, it would fail to compile (which is correct).
+    // if we tried to pass incrementElement here, it would fail to compile (which is correct).
     ::iter(strArray, strLen, printElement<std::string>);
     std::cout << "\n";
 
